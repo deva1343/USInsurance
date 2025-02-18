@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsureFlow | Modern Insurance Comparison</title>
-    <meta name="description" content="Compare and buy top insurance plans from leading providers. Instant quotes for health, auto, and life insurance.">
+    <title>InsureHub | Compare Top Insurance Plans</title>
+    <meta name="description" content="Compare and buy insurance plans from leading providers. Get instant quotes for health, auto, and life insurance.">
     
     <!-- SEO Meta -->
-    <meta name="keywords" content="insurance comparison, health plans, car insurance quotes, life coverage">
-    <link rel="canonical" href="https://yourdomain.com">
-
+    <meta name="keywords" content="insurance comparison, health plans, car insurance, life coverage, insurance quotes">
+    
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "InsuranceAgency",
-        "name": "InsureFlow",
-        "image": "https://yourdomain.com/logo.png",
-        "priceRange": "$$-$$$",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US"
-        }
+        "name": "InsureHub",
+        "url": "https://yourdomain.com",
+        "logo": "https://yourdomain.com/logo.png",
+        "priceRange": "$$-$$$"
     }
     </script>
 
@@ -30,104 +26,135 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        .nav-island {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 999px;
-            padding: 0.75rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-island:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(-50%) scale(1.05);
-        }
-
         .insurance-card {
             transition: transform 0.3s, box-shadow 0.3s;
-            perspective: 1000px;
+            transform-style: preserve-3d;
         }
-
         .insurance-card:hover {
             transform: translateY(-5px) rotateX(5deg);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-
-        .section-indicator {
-            height: 3px;
-            background: linear-gradient(90deg, #3B82F6, #6366F1, #8B5CF6);
-            position: fixed;
-            top: 5rem;
-            left: 0;
-            z-index: 999;
-        }
-
-        @media (max-width: 768px) {
-            .nav-island {
-                bottom: 1rem;
-                top: auto;
-                width: 90%;
-                justify-content: center;
-            }
+        .nav-glow {
+            box-shadow: 0 4px 30px rgba(59, 130, 246, 0.2);
         }
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen">
-    <!-- Dynamic Navigation -->
-    <nav class="nav-island flex gap-2">
-        <a href="#health" class="btn btn-sm glass rounded-full px-6 active:scale-95 transition-all">
-            🏥 Health
-        </a>
-        <a href="#auto" class="btn btn-sm glass rounded-full px-6 active:scale-95 transition-all">
-            🚗 Auto
-        </a>
-        <a href="#life" class="btn btn-sm glass rounded-full px-6 active:scale-95 transition-all">
-            ❤️ Life
-        </a>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800">
+    <!-- Navigation -->
+    <nav class="navbar sticky top-0 bg-base-100/75 backdrop-blur-md z-50 nav-glow">
+        <div class="container mx-auto px-4">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-xl font-bold text-primary">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    InsureHub
+                </a>
+            </div>
+            <div class="flex-none gap-4 hidden md:flex">
+                <a href="#health" class="btn btn-primary">🏥 Health</a>
+                <a href="#auto" class="btn btn-secondary">🚗 Auto</a>
+                <a href="#life" class="btn btn-accent">❤️ Life</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Progress Indicator -->
-    <div class="section-indicator" id="progressBar"></div>
-
-    <main class="container mx-auto px-4 pt-24 pb-32">
+    <main class="container mx-auto px-4 py-8">
         <!-- Health Insurance Section -->
-        <section id="health" class="mb-24 scroll-mt-24">
-            <h2 class="text-4xl font-bold mb-8 text-white">Health Insurance</h2>
+        <section id="health" class="mb-16 scroll-mt-16">
+            <h2 class="text-4xl font-bold mb-8 text-white">Health Insurance Plans</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Provider 1 -->
                 <div class="insurance-card card bg-base-100 shadow-xl">
                     <div class="card-body">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h3 class="card-title text-white">Blue Cross Platinum</h3>
+                                <h3 class="card-title text-white">BlueCross Platinum</h3>
                                 <div class="badge badge-primary mt-2">Most Popular</div>
                                 <p class="text-sm text-gray-400 mt-2">PPO Plans • $0 Deductible</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-2xl font-bold text-primary">$329</p>
-                                <button onclick="redirect('bcbs')" class="btn btn-primary btn-sm mt-2">
-                                    View Plans
-                                </button>
+                                <button onclick="redirect('bcbs')" class="btn btn-primary btn-sm mt-2">View Plans</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Add 4 more health providers following same structure -->
+                <!-- Provider 2 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">UnitedHealth Gold</h3>
+                                <div class="badge badge-success mt-2">Best Network</div>
+                                <p class="text-sm text-gray-400 mt-2">HMO Plans • Telemedicine</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-primary">$299</p>
+                                <button onclick="redirect('uhc')" class="btn btn-primary btn-sm mt-2">Compare</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 3 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Kaiser Select</h3>
+                                <div class="badge badge-warning mt-2">Top Rated</div>
+                                <p class="text-sm text-gray-400 mt-2">Integrated Care • Mental Health</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-primary">$279</p>
+                                <button onclick="redirect('kaiser')" class="btn btn-primary btn-sm mt-2">Enroll</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 4 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Aetna Advantage</h3>
+                                <div class="badge badge-info mt-2">Family Plans</div>
+                                <p class="text-sm text-gray-400 mt-2">Dental+Vision • Prescription</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-primary">$315</p>
+                                <button onclick="redirect('aetna')" class="btn btn-primary btn-sm mt-2">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 5 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Cigna TotalCare</h3>
+                                <div class="badge badge-error mt-2">New Offer</div>
+                                <p class="text-sm text-gray-400 mt-2">Global Coverage • Wellness</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-primary">$349</p>
+                                <button onclick="redirect('cigna')" class="btn btn-primary btn-sm mt-2">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Auto Insurance Section -->
-        <section id="auto" class="mb-24 scroll-mt-24">
-            <h2 class="text-4xl font-bold mb-8 text-white">Auto Insurance</h2>
+        <section id="auto" class="mb-16 scroll-mt-16">
+            <h2 class="text-4xl font-bold mb-8 text-white">Auto Insurance Providers</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Provider 1 -->
                 <div class="insurance-card card bg-base-100 shadow-xl">
@@ -140,21 +167,85 @@
                             </div>
                             <div class="text-right">
                                 <p class="text-2xl font-bold text-secondary">$89</p>
-                                <button onclick="redirect('geico')" class="btn btn-secondary btn-sm mt-2">
-                                    Get Quote
-                                </button>
+                                <button onclick="redirect('geico')" class="btn btn-secondary btn-sm mt-2">Get Quote</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Add 4 more auto providers -->
+                <!-- Provider 2 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Progressive Plus</h3>
+                                <div class="badge badge-warning mt-2">Smart Technology</div>
+                                <p class="text-sm text-gray-400 mt-2">Usage-Based Insurance</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-secondary">$95</p>
+                                <button onclick="redirect('progressive')" class="btn btn-secondary btn-sm mt-2">Compare</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 3 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">State Farm Premier</h3>
+                                <div class="badge badge-info mt-2">Top Service</div>
+                                <p class="text-sm text-gray-400 mt-2">Accident Forgiveness</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-secondary">$102</p>
+                                <button onclick="redirect('statefarm')" class="btn btn-secondary btn-sm mt-2">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 4 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Allstate Protection</h3>
+                                <div class="badge badge-error mt-2">Claim Champion</div>
+                                <p class="text-sm text-gray-400 mt-2">New Car Replacement</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-secondary">$110</p>
+                                <button onclick="redirect('allstate')" class="btn btn-secondary btn-sm mt-2">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 5 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Liberty Mutual Shield</h3>
+                                <div class="badge badge-success mt-2">Best Coverage</div>
+                                <p class="text-sm text-gray-400 mt-2">Better Car Replacement</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-secondary">$98</p>
+                                <button onclick="redirect('liberty')" class="btn btn-secondary btn-sm mt-2">Quote</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Life Insurance Section -->
-        <section id="life" class="mb-24 scroll-mt-24">
-            <h2 class="text-4xl font-bold mb-8 text-white">Life Insurance</h2>
+        <section id="life" class="mb-16 scroll-mt-16">
+            <h2 class="text-4xl font-bold mb-8 text-white">Life Insurance Plans</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Provider 1 -->
                 <div class="insurance-card card bg-base-100 shadow-xl">
@@ -167,15 +258,79 @@
                             </div>
                             <div class="text-right">
                                 <p class="text-2xl font-bold text-accent">$45</p>
-                                <button onclick="redirect('northwestern')" class="btn btn-accent btn-sm mt-2">
-                                    Calculate
-                                </button>
+                                <button onclick="redirect('northwestern')" class="btn btn-accent btn-sm mt-2">Calculate</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Add 4 more life providers -->
+                <!-- Provider 2 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Prudential SecureLife</h3>
+                                <div class="badge badge-info mt-2">Fast Approval</div>
+                                <p class="text-sm text-gray-400 mt-2">No Exam Option</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-accent">$38</p>
+                                <button onclick="redirect('prudential')" class="btn btn-accent btn-sm mt-2">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 3 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">New York Life Elite</h3>
+                                <div class="badge badge-warning mt-2">Best Term</div>
+                                <p class="text-sm text-gray-400 mt-2">Convertible Policies</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-accent">$42</p>
+                                <button onclick="redirect('nylife')" class="btn btn-accent btn-sm mt-2">Learn</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 4 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Mutual of Omaha</h3>
+                                <div class="badge badge-error mt-2">No Medical</div>
+                                <p class="text-sm text-gray-400 mt-2">Guaranteed Acceptance</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-accent">$55</p>
+                                <button onclick="redirect('mutual')" class="btn btn-accent btn-sm mt-2">Quote</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider 5 -->
+                <div class="insurance-card card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-white">Guardian Life</h3>
+                                <div class="badge badge-success mt-2">Top Dividend</div>
+                                <p class="text-sm text-gray-400 mt-2">Living Benefits</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-accent">$49</p>
+                                <button onclick="redirect('guardian')" class="btn btn-accent btn-sm mt-2">Enroll</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -230,7 +385,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800 text-center">
-                <p class="text-sm">&copy; 2024 InsureFlow. All rights reserved.</p>
+                <p class="text-sm">&copy; 2024 InsureHub. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -241,15 +396,24 @@
         const affiliateLinks = {
             // Health Insurance
             'bcbs': '#',
-            // Add 4 more health links
+            'uhc': '#',
+            'kaiser': '#',
+            'aetna': '#',
+            'cigna': '#',
             
             // Auto Insurance
             'geico': '#',
-            // Add 4 more auto links
+            'progressive': '#',
+            'statefarm': '#',
+            'allstate': '#',
+            'liberty': '#',
             
             // Life Insurance
             'northwestern': '#',
-            // Add 4 more life links
+            'prudential': '#',
+            'nylife': '#',
+            'mutual': '#',
+            'guardian': '#'
         };
 
         // Redirect Handler
@@ -265,18 +429,6 @@
                 }
             }
         }
-
-        // Progress Indicator
-        function updateProgress() {
-            const scrollTop = document.documentElement.scrollTop;
-            const windowHeight = document.documentElement.clientHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const progress = (scrollTop / (docHeight - windowHeight)) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-        }
-
-        window.addEventListener('scroll', updateProgress);
-        window.addEventListener('resize', updateProgress);
 
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
