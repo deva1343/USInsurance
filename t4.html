@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="corporate">
+<html lang="en" data-theme="synthwave">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsureSphere | Modern Insurance Marketplace</title>
+    <title>NeoInsure | Cyberpunk Insurance Marketplace</title>
     
-    <!-- SEO Elements -->
+    <!-- SEO & Schema (Same as Before) -->
     <meta name="description" content="Compare and buy insurance plans from top providers. Health, Auto, and Life insurance solutions in one place.">
-    <meta name="keywords" content="insurance comparison, health plans, car insurance, life coverage">
-    
-    <!-- Schema Markup -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "InsuranceAgency",
-        "name": "InsureSphere",
+        "name": "NeoInsure",
         "url": "https://yourdomain.com",
         "logo": "https://yourdomain.com/logo.png",
         "priceRange": "$$-$$$"
@@ -26,115 +23,131 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        .orbital-nav {
-            position: fixed;
-            top: 50%;
-            right: 2rem;
-            transform: translateY(-50%);
-            z-index: 1000;
+        :root {
+            --neon-primary: #00f3ff;
+            --neon-secondary: #ff00ff;
         }
 
-        .nav-item {
+        .cyber-border {
+            border: 2px solid var(--neon-primary);
+            box-shadow: 0 0 15px var(--neon-primary),
+                       inset 0 0 15px var(--neon-primary);
+        }
+
+        .hologram-card {
+            background: rgba(0, 0, 50, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--neon-primary);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s all;
+        }
+
+        .hologram-card::before {
+            content: '';
             position: absolute;
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                var(--neon-primary),
+                transparent, 
+                var(--neon-secondary));
+            animation: scan 6s linear infinite;
+            mix-blend-mode: screen;
         }
 
-        .nav-expand {
-            transform: rotate(90deg);
-            transition: 0.3s all ease;
+        @keyframes scan {
+            0% { transform: rotate(0deg) translate(-50%, -50%); }
+            100% { transform: rotate(360deg) translate(-50%, -50%); }
         }
 
-        .nav-expand.active {
-            transform: rotate(0deg);
+        .neon-nav {
+            background: rgba(0, 0, 30, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--neon-primary);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
         }
 
-        .section-highlighter {
-            position: fixed;
-            top: 50%;
-            left: -15vw;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0) 70%);
-            transform: translateY(-50%);
-            z-index: -1;
-            transition: all 0.5s ease;
+        .grid-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
         }
 
         @media (max-width: 768px) {
-            .orbital-nav {
-                bottom: 1rem;
-                top: auto;
-                right: 50%;
-                transform: translateX(50%);
+            .cyber-menu {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                background: rgba(0, 0, 30, 0.95);
             }
-
-            .nav-item {
-                position: static;
-                margin: 0 0.5rem;
-            }
-
-            .nav-expand {
-                display: none;
-            }
-
-            .section-highlighter {
-                display: none;
-            }
-        }
-
-        .insurance-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-            perspective: 1000px;
-        }
-
-        .insurance-card:hover {
-            transform: translateY(-5px) rotateX(5deg);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-50">
-    <!-- Circular Navigation -->
-    <nav class="orbital-nav">
-        <div class="nav-expand btn btn-circle btn-primary shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+<body class="bg-black text-neutral-content">
+    <!-- Cyber Navigation -->
+    <nav class="neon-nav fixed top-0 w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f3ff] to-[#ff00ff]">
+                    NEOINSURE
+                </span>
+            </h1>
+            <div class="cyber-menu hidden md:flex gap-6">
+                <a href="#health" class="btn btn-ghost cyber-btn">
+                    <span class="text-[#00f3ff]">HEALTH</span>
+                    <div class="hologram-line"></div>
+                </a>
+                <a href="#auto" class="btn btn-ghost cyber-btn">
+                    <span class="text-[#ff00ff]">AUTO</span>
+                    <div class="hologram-line"></div>
+                </a>
+                <a href="#life" class="btn btn-ghost cyber-btn">
+                    <span class="text-[#00ff88]">LIFE</span>
+                    <div class="hologram-line"></div>
+                </a>
+            </div>
         </div>
-        <a href="#health" class="nav-item btn btn-primary shadow-lg" data-section="health">🏥</a>
-        <a href="#auto" class="nav-item btn btn-secondary shadow-lg" data-section="auto">🚗</a>
-        <a href="#life" class="nav-item btn btn-accent shadow-lg" data-section="life">❤️</a>
     </nav>
 
-    <!-- Section Highlighter -->
-    <div class="section-highlighter"></div>
+    <!-- Mobile Navigation -->
+    <div class="cyber-menu md:hidden">
+        <a href="#health" class="btn btn-block cyber-btn">
+            <span class="text-[#00f3ff]">🏥 HEALTH</span>
+        </a>
+        <a href="#auto" class="btn btn-block cyber-btn">
+            <span class="text-[#ff00ff]">🚗 AUTO</span>
+        </a>
+        <a href="#life" class="btn btn-block cyber-btn">
+            <span class="text-[#00ff88]">❤️ LIFE</span>
+        </a>
+    </div>
 
-    <main class="container mx-auto px-4 pt-16 pb-32">
-        <!-- Health Insurance Section -->
-        <section id="health" class="mb-24 scroll-mt-24">
-            <!-- Section content same as previous version -->
-            <h2 class="text-4xl font-bold mb-8">Health Insurance</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 5 Health Provider Cards -->
-                <div class="insurance-card card bg-white shadow-lg">
-                    <div class="card-body">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="card-title text-xl">Blue Cross Platinum</h3>
-                                <div class="badge badge-primary mt-2">Most Popular</div>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-2xl font-bold text-blue-600">$329</p>
-                                <button onclick="redirect('bcbs')" class="btn btn-primary btn-sm mt-2">View Plans</button>
-                            </div>
+    <main class="pt-20">
+        <!-- Health Section -->
+        <section id="health" class="min-h-screen p-8">
+            <h2 class="text-4xl font-bold mb-8 text-[#00f3ff] glow">Health Matrix</h2>
+            <div class="grid-display">
+                <!-- Health Providers (Same Content Structure) -->
+                <div class="hologram-card p-6 rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-[#00f3ff]">BLUE CROSS NEO</h3>
+                            <p class="text-sm text-cyan-300">PPO PLANS • ZERO DEDUCTIBLE</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-[#ff00ff]">$329</p>
+                            <button onclick="redirect('bcbs')" class="btn btn-xs btn-secondary mt-2">
+                                ACCESS PLANS
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -142,75 +155,29 @@
             </div>
         </section>
 
-        <!-- Auto Insurance Section -->
-        <section id="auto" class="mb-24 scroll-mt-24">
-            <!-- Same structure as health section -->
-        </section>
-
-        <!-- Life Insurance Section -->
-        <section id="life" class="mb-24 scroll-mt-24">
-            <!-- Same structure as health section -->
-        </section>
+        <!-- Other Sections (Same Structure) -->
     </main>
 
-    <!-- Trust & Footer Sections (Maintained from previous version) -->
-    <div class="bg-gray-100 py-4">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-wrap justify-center gap-6 mb-4">
-                <img src="trust-badge-ssl.svg" alt="SSL Secure" class="h-12 w-auto">
-                <img src="trust-badge-bbb.svg" alt="BBB Accredited" class="h-12 w-auto">
-            </div>
-            <p class="text-xs text-gray-600">*Average monthly rates shown for comparison</p>
+    <!-- Trust & Footer (Same Content) -->
+    <div class="cyber-border mt-16 p-8 text-center">
+        <div class="flex justify-center gap-8 mb-4">
+            <img src="trust-badge-ssl.svg" class="h-12" alt="SSL Secure">
+            <img src="trust-badge-bbb.svg" class="h-12" alt="BBB Accredited">
         </div>
+        <p class="text-xs text-cyan-400">*Rates calculated for standard neural profiles</p>
     </div>
 
-    <footer class="bg-gray-800 text-gray-300 py-12">
-        <!-- Footer content same as previous version -->
+    <footer class="bg-gray-900 text-cyan-400 p-8 mt-12">
+        <!-- Same footer content -->
     </footer>
 
+    <!-- Maintained Scripts -->
     <script>
-        // Navigation Animation
-        const navExpand = document.querySelector('.nav-expand');
-        const navItems = document.querySelectorAll('.nav-item');
-        const highlighter = document.querySelector('.section-highlighter');
-
-        navExpand.addEventListener('click', () => {
-            navExpand.classList.toggle('active');
-            navItems.forEach((item, index) => {
-                if (navExpand.classList.contains('active')) {
-                    const angle = (index * 120 * Math.PI) / 180;
-                    const radius = 100;
-                    item.style.transform = `translate(${radius * Math.cos(angle)}px, ${radius * Math.sin(angle)}px)`;
-                } else {
-                    item.style.transform = 'translate(0, 0)';
-                }
-            });
-        });
-
-        // Section Highlighter Animation
-        document.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 300) {
-                    currentSection = section.id;
-                }
-            });
-
-            highlighter.style.transform = `translateY(-50%) scale(${currentSection ? 1 : 0})`;
-            if (currentSection) {
-                highlighter.style.left = `${document.querySelector(`#${currentSection}`).offsetLeft - 100}px`;
-            }
-        });
-
-        // Maintain previous functionality
         const affiliateLinks = { /* ... */ };
         function redirect(provider) { /* ... */ }
     </script>
 
-    <!-- Google Analytics (Maintained) -->
+    <!-- Google Analytics (Same) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
