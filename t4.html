@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsureWave | Modern Insurance Comparison</title>
+    
+    <!-- UI Frameworks -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes gradient-pulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .dynamic-nav {
+            background: linear-gradient(45deg, #3B82F6, #6366F1, #8B5CF6);
+            background-size: 400% 400%;
+            animation: gradient-pulse 15s ease infinite;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-orb {
+            width: 50px;
+            height: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-orb.active {
+            transform: scale(1.2);
+            box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-indicator {
+            height: 4px;
+            width: 100vw;
+            left: 0;
+            background: linear-gradient(90deg, #3B82F6, #6366F1, #8B5CF6);
+            transform-origin: left center;
+        }
+
+        .insurance-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            transform-style: preserve-3d;
+        }
+
+        .insurance-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .dynamic-nav {
+                bottom: 0;
+                top: auto;
+                border-radius: 2rem 2rem 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50">
+    <!-- Dynamic Navigation -->
+    <nav class="dynamic-nav fixed top-4 left-4 right-4 z-50 rounded-2xl p-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <div class="nav-orb bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-xl">⚡</span>
+            </div>
+            <h1 class="text-white font-bold text-xl">InsureWave</h1>
+        </div>
+        
+        <div class="flex gap-2">
+            <a href="#health" class="nav-orb bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30">
+                🏥
+            </a>
+            <a href="#auto" class="nav-orb bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30">
+                🚗
+            </a>
+            <a href="#life" class="nav-orb bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30">
+                ❤️
+            </a>
+        </div>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="fixed top-0 left-0 right-0 z-40">
+        <div class="section-indicator" id="progressBar"></div>
+    </div>
+
+    <main class="container mx-auto px-4 pt-24 pb-32">
+        <!-- Health Insurance Section -->
+        <section id="health" class="mb-24 scroll-mt-24">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 md:mb-0">Health Coverage</h2>
+                <div class="flex gap-2">
+                    <div class="badge badge-lg badge-primary">5 Top Providers</div>
+                    <div class="badge badge-lg badge-outline">2024 Ratings</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Health Provider Cards (Same content as before) -->
+                <div class="insurance-card card bg-white shadow-lg">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="card-title text-xl">Blue Cross Platinum</h3>
+                                <div class="badge badge-primary mt-2">Most Popular</div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-blue-600">$329</p>
+                                <button class="btn btn-primary btn-sm mt-2">View Plans</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add remaining 4 health cards -->
+            </div>
+        </section>
+
+        <!-- Auto Insurance Section -->
+        <section id="auto" class="mb-24 scroll-mt-24">
+            <!-- Similar structure to health section -->
+        </section>
+
+        <!-- Life Insurance Section -->
+        <section id="life" class="mb-24 scroll-mt-24">
+            <!-- Similar structure to health section -->
+        </section>
+    </main>
+
+    <!-- Floating Action Menu (Mobile) -->
+    <div class="md:hidden fixed bottom-24 right-4 z-50">
+        <div class="join join-vertical">
+            <button class="btn btn-primary join-item">🏥 Health</button>
+            <button class="btn btn-secondary join-item">🚗 Auto</button>
+            <button class="btn btn-accent join-item">❤️ Life</button>
+        </div>
+    </div>
+
+    <!-- 3D Parallax Footer -->
+    <footer class="bg-gray-800 text-white py-12 transform-style-preserve-3d">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 transform translateZ(0)">
+                <!-- Footer content same as before -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animated Progress Indicator
+        function updateProgress() {
+            const scrollTop = document.documentElement.scrollTop;
+            const windowHeight = document.documentElement.clientHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const progress = (scrollTop / (docHeight - windowHeight)) * 100;
+            document.getElementById('progressBar').style.transform = `scaleX(${progress / 100})`;
+        }
+
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('resize', updateProgress);
+
+        // Smooth Scroll with Offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const offset = 100;
+                window.scrollTo({
+                    top: target.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamic Navigation Activation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
