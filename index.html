@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsureHub | Compare & Buy Insurance Online</title>
+    <meta name="description" content="Compare and buy health, auto, and life insurance from top providers. Get instant quotes and save money today!">
+    
+    <!-- SEO Elements -->
+    <meta name="keywords" content="health insurance, car insurance, life insurance, compare quotes, USA">
+    <meta property="og:title" content="InsureHub | Digital Insurance Marketplace">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "InsuranceAgency",
+        "name": "InsureHub",
+        "image": "https://example.com/logo.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        }
+    }
+    </script>
+
+    <!-- Tailwind + DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Animation CSS -->
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50">
+    <!-- Navigation -->
+    <nav class="navbar bg-base-100 shadow-lg px-4 lg:px-8">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl text-blue-600 font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                InsureHub
+            </a>
+        </div>
+        <div class="flex-none gap-4">
+            <a href="#health" class="btn btn-ghost">Health</a>
+            <a href="#auto" class="btn btn-ghost">Auto</a>
+            <a href="#life" class="btn btn-ghost">Life</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen">
+        <div class="hero-content text-center">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl font-bold mb-8">Find Your Perfect Insurance in 
+                    <span class="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">3 Minutes</span>
+                </h1>
+                
+                <!-- Zip Code Search -->
+                <div class="join mb-8 float-animation">
+                    <input class="input input-bordered join-item w-64" placeholder="Enter ZIP Code"/>
+                    <button class="btn join-item bg-blue-600 text-white">Get Quotes</button>
+                </div>
+
+                <!-- Insurance Cards -->
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="card bg-base-100 shadow-xl image-full">
+                        <figure><img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" alt="Health"/></figure>
+                        <div class="card-body">
+                            <h2 class="card-title text-white">Health Insurance</h2>
+                            <p class="text-white">Compare 50+ plans from top providers</p>
+                            <div class="card-actions justify-end">
+                                <button onclick="redirectTo('health')" class="btn btn-primary">View Plans</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat similar cards for Auto and Life -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance Comparison Table -->
+    <section class="p-8 lg:p-16" id="comparison">
+        <div class="overflow-x-auto">
+            <table class="table table-zebra">
+                <thead>
+                    <tr>
+                        <th>Provider</th>
+                        <th>Coverage</th>
+                        <th>Price/month</th>
+                        <th>Rating</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Blue Cross</td>
+                        <td>Full medical + Dental</td>
+                        <td>$350</td>
+                        <td>⭐ 4.8/5</td>
+                        <td><button onclick="redirectTo('bluecross')" class="btn btn-sm btn-outline">Get Quote</button></td>
+                    </tr>
+                    <!-- Add more rows -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer p-10 bg-neutral text-neutral-content">
+        <div>
+            <span class="footer-title">Services</span> 
+            <a href="#health" class="link link-hover">Health Insurance</a>
+            <a href="#auto" class="link link-hover">Car Insurance</a>
+            <a href="#life" class="link link-hover">Life Insurance</a>
+        </div> 
+        <div>
+            <span class="footer-title">Legal</span> 
+            <a class="link link-hover">Privacy policy</a>
+            <a class="link link-hover">Terms of use</a>
+        </div>
+    </footer>
+
+    <!-- Redirect Script -->
+    <script>
+        // Partner redirect mapping
+        const partners = {
+            health: 'https://partner1.com?affiliate_id=123',
+            auto: 'https://partner2.com?affiliate_id=123',
+            bluecross: 'https://bluecross.com/affiliate'
+        };
+
+        function redirectTo(type) {
+            window.location.href = partners[type] || '#';
+        }
+
+        // Quiz Logic
+        function startQuiz() {
+            document.getElementById('hero').classList.add('hidden');
+            document.getElementById('quiz').classList.remove('hidden');
+        }
+    </script>
+
+    <!-- Interactive Quiz (Hidden Initially) -->
+    <div id="quiz" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4">Find Your Ideal Insurance</h3>
+            <!-- Add quiz questions here -->
+            <button onclick="redirectTo('quiz-result')" class="btn btn-primary mt-4">Get Recommendations</button>
+        </div>
+    </div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXX');
+    </script>
+</body>
+</html>
