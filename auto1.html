@@ -124,6 +124,13 @@
       background-color: #1976D2;
       color: #ffffff;
     }
+    /* Chart Container for better responsiveness */
+    .chart-container {
+      position: relative;
+      margin: auto;
+      height: 300px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -255,9 +262,9 @@
           <!-- Detailed Breakdown Table -->
           <div id="breakdownTable"></div>
 
-          <!-- Chart Canvas -->
-          <div class="mt-4">
-            <canvas id="premiumBreakdownChart" width="400" height="300"></canvas>
+          <!-- Improved Doughnut Chart Container -->
+          <div class="chart-container mt-4">
+            <canvas id="premiumBreakdownChart"></canvas>
           </div>
         </div>
       </div>
@@ -269,7 +276,7 @@
     <div class="container px-4">
       <h2 class="text-3xl font-bold text-center mb-8">10 Things to Check Before Buying Car Insurance</h2>
       <div class="row">
-        <!-- (Existing Topics Cards) -->
+        <!-- Topic 1 -->
         <div class="col-md-6 mb-4">
           <div class="card shadow">
             <div class="card-body">
@@ -281,8 +288,114 @@
             </div>
           </div>
         </div>
-        <!-- Repeat similar cards for Topics 2-10... -->
-        <!-- For brevity, only one topic is shown. -->
+        <!-- Topic 2 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">2. Policy Exclusions</h3>
+              <p class="card-text">
+                Understand exactly what isn’t covered to avoid unexpected expenses when you file a claim.
+              </p>
+              <a href="https://example.com/provider2" target="_blank" class="btn btn-primary">Explore Provider 2</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 3 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">3. Premium Costs</h3>
+              <p class="card-text">
+                Compare premium rates and uncover hidden fees to ensure you get the best value.
+              </p>
+              <a href="https://example.com/provider3" target="_blank" class="btn btn-primary">Explore Provider 3</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 4 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">4. Deductibles</h3>
+              <p class="card-text">
+                Examine deductible amounts and how they impact your claim payout and affordability.
+              </p>
+              <a href="https://example.com/provider4" target="_blank" class="btn btn-primary">Explore Provider 4</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 5 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">5. Claim Process</h3>
+              <p class="card-text">
+                Look for a hassle-free, streamlined claim process that puts you first.
+              </p>
+              <a href="https://example.com/provider5" target="_blank" class="btn btn-primary">Explore Provider 5</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 6 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">6. Customer Reviews</h3>
+              <p class="card-text">
+                Read real customer feedback to gauge an insurer’s reliability and service quality.
+              </p>
+              <a href="https://example.com/provider6" target="_blank" class="btn btn-primary">Explore Provider 6</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 7 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">7. Discounts and Incentives</h3>
+              <p class="card-text">
+                Discover bundling options and special discounts that could dramatically lower your premium.
+              </p>
+              <a href="https://example.com/provider7" target="_blank" class="btn btn-primary">Explore Provider 7</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 8 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">8. Financial Stability</h3>
+              <p class="card-text">
+                Check an insurer’s financial strength to ensure they can handle claims even in tough times.
+              </p>
+              <a href="https://example.com/provider8" target="_blank" class="btn btn-primary">Explore Provider 8</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 9 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">9. Additional Benefits</h3>
+              <p class="card-text">
+                Consider extras like roadside assistance and rental coverage that add real value to your policy.
+              </p>
+              <a href="https://example.com/provider9" target="_blank" class="btn btn-primary">Explore Provider 9</a>
+            </div>
+          </div>
+        </div>
+        <!-- Topic 10 -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title">10. Terms and Conditions</h3>
+              <p class="card-text">
+                Carefully review the fine print to understand your rights and any potential limitations.
+              </p>
+              <a href="https://example.com/provider10" target="_blank" class="btn btn-primary">Explore Provider 10</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -416,18 +529,21 @@
       document.getElementById('breakdownTable').innerHTML = breakdownHTML;
     }
 
-    // Function to render the breakdown chart using Chart.js
+    // Function to render an enhanced doughnut chart using Chart.js with modern features
     function renderChart(netBase, ageAdj, accident, mileage, creditAdj) {
       const ctx = document.getElementById('premiumBreakdownChart').getContext('2d');
-      // For the chart, if credit adjustment is negative, show as "Credit Discount"
+      // Determine label for credit adjustment: show as discount if negative
       const creditLabel = creditAdj < 0 ? "Credit Discount" : "Credit Adjustment";
       const creditValue = Math.abs(creditAdj);
-
+      
       const data = {
-        labels: ["Net Base", "Age Adjustment", "Accident", "Mileage", creditLabel],
+        labels: ["Net Base", "Age Adjustment", "Accident Surcharge", "Mileage Surcharge", creditLabel],
         datasets: [{
           data: [netBase, ageAdj, accident, mileage, creditValue],
           backgroundColor: ["#1976D2", "#64B5F6", "#FF9800", "#8BC34A", "#E91E63"],
+          hoverBackgroundColor: ["#1565C0", "#42A5F5", "#FB8C00", "#7CB342", "#D81B60"],
+          borderWidth: 1,
+          borderColor: "#fff"
         }]
       };
 
@@ -436,18 +552,40 @@
       }
 
       chartInstance = new Chart(ctx, {
-        type: "pie",
+        type: 'doughnut',
         data: data,
         options: {
           responsive: true,
+          maintainAspectRatio: false,
+          cutout: '50%', // Adjust thickness of doughnut
           plugins: {
             legend: {
-              position: "bottom",
+              position: 'bottom',
+              labels: {
+                boxWidth: 20,
+                font: {
+                  size: 14
+                }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const label = context.label || '';
+                  const value = context.parsed;
+                  return label + ': $' + value.toFixed(2);
+                }
+              }
             },
             title: {
               display: true,
-              text: "Premium Cost Distribution"
+              text: 'Premium Cost Distribution'
             }
+          },
+          animation: {
+            animateRotate: true,
+            animateScale: true,
+            easing: 'easeOutQuart'
           }
         }
       });
@@ -464,7 +602,7 @@
       const carAge = parseFloat(document.getElementById('carAge').value);
       const creditScore = parseFloat(document.getElementById('creditScore').value);
 
-      // Base Premium: a percentage of car value
+      // Base Premium: 0.5% of car value
       const basePremium = carValue * 0.005;
 
       // Car Age Discount: older cars get a discount on base premium
@@ -484,16 +622,16 @@
         ageAdjustment = 100;
       }
 
-      // Accident Surcharge: each accident adds a fixed cost
+      // Accident Surcharge: each accident adds $50
       const accidentSurcharge = accidents * 50;
 
-      // Mileage Surcharge: cost per mile driven annually
+      // Mileage Surcharge: $0.02 per mile driven annually
       const mileageSurcharge = annualMileage * 0.02;
 
       // Subtotal before credit adjustment
       const subtotal = (basePremium - carAgeDiscount) + ageAdjustment + accidentSurcharge + mileageSurcharge;
 
-      // Credit Adjustment: based on credit score (simulated thresholds)
+      // Credit Adjustment: based on credit score thresholds
       let creditAdjustmentPercent = 0;
       if (creditScore < 600) {
         creditAdjustmentPercent = 0.25;
@@ -512,7 +650,7 @@
       // Net Base (after car age discount)
       const netBase = basePremium - carAgeDiscount;
 
-      // Update table and chart
+      // Update breakdown table and chart
       updateBreakdown(basePremium, ageAdjustment, accidentSurcharge, mileageSurcharge, carAgeDiscount, subtotal, creditAdjustmentPercent, creditAdjustmentAmount, totalPremium);
       renderChart(netBase, ageAdjustment, accidentSurcharge, mileageSurcharge, creditAdjustmentAmount);
     });
