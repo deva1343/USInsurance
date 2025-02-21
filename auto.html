@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Insurance USA – Your Ultimate Guide & Tools</title>
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Tailwind CSS (via CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -13,10 +14,9 @@
     body {
       background-color: #121212;
       color: #e0e0e0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
-    a {
-      text-decoration: none;
-    }
+    a { text-decoration: none; }
     .navbar {
       background-color: #1f1f1f;
     }
@@ -32,7 +32,7 @@
     }
     .card-header {
       background: linear-gradient(90deg, #00ffff, #ff00ff);
-      color: #ffffff; /* Changed for better contrast */
+      color: #ffffff;
       font-weight: bold;
     }
     .btn-primary {
@@ -162,19 +162,19 @@
           <form id="insuranceCalculator">
             <div class="mb-3">
               <label for="carValue" class="form-label">Car Value ($)</label>
-              <input type="number" class="form-control" id="carValue" placeholder="Enter your car's value" required />
+              <input type="number" class="form-control" id="carValue" placeholder="Enter your car's value" required>
             </div>
             <div class="mb-3">
               <label for="driverAge" class="form-label">Driver Age</label>
-              <input type="number" class="form-control" id="driverAge" placeholder="Enter your age" required />
+              <input type="number" class="form-control" id="driverAge" placeholder="Enter your age" required>
             </div>
             <div class="mb-3">
               <label for="accidents" class="form-label">Number of Accidents</label>
-              <input type="number" class="form-control" id="accidents" placeholder="How many accidents?" required />
+              <input type="number" class="form-control" id="accidents" placeholder="How many accidents?" required>
             </div>
             <div class="mb-3">
               <label for="annualMileage" class="form-label">Annual Mileage</label>
-              <input type="number" class="form-control" id="annualMileage" placeholder="Enter your annual mileage" required />
+              <input type="number" class="form-control" id="annualMileage" placeholder="Enter your annual mileage" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Calculate My Premium</button>
           </form>
@@ -361,11 +361,11 @@
           <form id="contactForm">
             <div class="mb-3">
               <label for="name" class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+              <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
             </div>
             <div class="mb-3">
               <label for="message" class="form-label">Your Message</label>
@@ -388,30 +388,22 @@
   <!-- Bootstrap Bundle with Popper and Custom JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Simple Contact Form Handler
+    // Contact form handler
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you for contacting us! We will get back to you soon.');
       this.reset();
     });
 
-    // Enhanced Car Insurance Calculator Logic
+    // Car Insurance Calculator Logic
     document.getElementById('insuranceCalculator').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Retrieve input values
       const carValue = parseFloat(document.getElementById('carValue').value);
       const driverAge = parseFloat(document.getElementById('driverAge').value);
       const accidents = parseFloat(document.getElementById('accidents').value);
       const annualMileage = parseFloat(document.getElementById('annualMileage').value);
-
-      // Updated premium calculation formula (demonstration purposes only)
-      let premium = (carValue * 0.005)
-                  + ((100 - driverAge) * 0.1)
-                  + (accidents * 50)
-                  + (annualMileage * 0.02);
+      let premium = (carValue * 0.005) + ((100 - driverAge) * 0.1) + (accidents * 50) + (annualMileage * 0.02);
       premium = premium.toFixed(2);
-
-      // Display the result
       document.getElementById('calculatorResult').textContent = "Estimated Premium: $" + premium;
     });
   </script>
